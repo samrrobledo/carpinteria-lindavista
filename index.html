@@ -92,7 +92,7 @@ body{font-family:'Jost',sans-serif;background:#fff;color:#1a1a1a;font-weight:300
 .logo-since{font-size:.65rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:2.5rem}
 .btn-cta{display:inline-flex;align-items:center;gap:9px;border:1px solid #1a1a1a;color:#1a1a1a;padding:.82rem 2.2rem;font-family:'Jost',sans-serif;font-size:.7rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s;cursor:pointer;background:transparent}
 .btn-cta:hover{background:#1a1a1a;color:#fff}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s ease 1.3s forwards}
+.scroll-hint{position:absolute;bottom:2rem;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s ease 1.3s forwards;padding-right:60px}
 .scroll-hint span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#888;font-weight:300}
 .scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,#888,transparent);animation:lineDown 2s ease-in-out infinite}
 @keyframes lineDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -124,6 +124,7 @@ nav.show{opacity:1;transform:translateY(0)}
   grid-template-columns:repeat(4,1fr);
   grid-auto-rows:220px;
   gap:3px;
+  grid-auto-flow:dense;
 }
 .ci{
   overflow:hidden;
@@ -212,6 +213,11 @@ textarea{resize:vertical;min-height:90px}
 .btn-submit{display:flex;align-items:center;justify-content:center;gap:10px;background:#1a1a1a;color:#fff;border:none;padding:.95rem 1rem;font-family:'Jost',sans-serif;font-size:.65rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;margin-top:.5rem;transition:background .2s;width:100%}
 .btn-submit:hover{background:#333}
 .form-note{font-size:.62rem;color:#ccc;text-align:center;letter-spacing:.06em;margin-top:.5rem;font-weight:200}
+.form-success{display:none;text-align:center;padding:3rem 1rem}
+.form-success.show{display:block}
+.form-success .check{width:56px;height:56px;background:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+.form-success h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:.75rem;color:#1a1a1a}
+.form-success p{font-size:.85rem;color:#999;line-height:1.9;font-weight:300}
 
 /* ── FOOTER ── */
 footer{padding:2.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #f0f0f0}
@@ -358,12 +364,12 @@ footer p{font-size:.62rem;color:#ccc;letter-spacing:.08em;font-weight:200}
     </div>
     <form id="lead-form">
       <div class="f2">
-        <div><label>Nombre</label><input type="text" id="nombre" placeholder="Tu nombre" required></div>
-        <div><label>WhatsApp</label><input type="tel" id="telefono" placeholder="55 XXXX XXXX" required></div>
+        <div><label>Nombre</label><input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required></div>
+        <div><label>WhatsApp</label><input type="tel" id="telefono" name="whatsapp" placeholder="55 XXXX XXXX" required></div>
       </div>
       <div>
         <label>¿Qué necesitas?</label>
-        <select id="tipo" required>
+        <select id="tipo" name="tipo_mueble" required>
           <option value="" disabled selected>Selecciona una opción</option>
           <option>Clóset</option>
           <option>Cocina integral</option>
@@ -375,10 +381,10 @@ footer p{font-size:.62rem;color:#ccc;letter-spacing:.08em;font-weight:200}
         </select>
       </div>
       <div class="f2">
-        <div><label>Medidas aproximadas</label><input type="text" id="medidas" placeholder="ej. 2.5 m ancho × 2.4 m alto"></div>
+        <div><label>Medidas aproximadas</label><input type="text" id="medidas" name="medidas" placeholder="ej. 2.5 m ancho × 2.4 m alto"></div>
         <div>
           <label>Presupuesto aproximado</label>
-          <select id="presupuesto">
+          <select id="presupuesto" name="presupuesto">
             <option value="" disabled selected>Rango estimado</option>
             <option>Menos de $5,000</option>
             <option>$5,000 – $15,000</option>
@@ -391,7 +397,7 @@ footer p{font-size:.62rem;color:#ccc;letter-spacing:.08em;font-weight:200}
       </div>
       <div>
         <label>¿Cuándo lo necesitas?</label>
-        <select id="plazo">
+        <select id="plazo" name="cuando">
           <option value="" disabled selected>Urgencia</option>
           <option>Menos de 2 semanas</option>
           <option>En el próximo mes</option>
@@ -401,14 +407,21 @@ footer p{font-size:.62rem;color:#ccc;letter-spacing:.08em;font-weight:200}
       </div>
       <div>
         <label>Detalles adicionales</label>
-        <textarea id="detalles" placeholder="Material preferido, referencias, medidas del espacio, ideas, etc."></textarea>
+        <textarea id="detalles" name="detalles" placeholder="Material preferido, referencias, medidas del espacio, ideas, etc."></textarea>
       </div>
-      <button type="submit" class="btn-submit">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Enviar por WhatsApp
+      <button type="submit" class="btn-submit" id="btn-submit">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        Enviar solicitud
       </button>
-      <p class="form-note">Se abre WhatsApp con tu información lista — sin spam ni llamadas</p>
+      <p class="form-note">Recibirás respuesta en menos de 24 horas · Sin spam ni llamadas</p>
     </form>
+    <div class="form-success" id="form-success">
+      <div class="check">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>¡Solicitud enviada!</h3>
+      <p>Recibimos tu información y te contactaremos<br>por WhatsApp en menos de 24 horas.</p>
+    </div>
   </div>
 </section>
 
@@ -474,24 +487,46 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') lbNav(1);
 });
 
-// WhatsApp + Sheets
+// Formulario → Formspree (email al dueño) + Google Sheets opcional
+const FORMSPREE_URL = 'REEMPLAZA_CON_TU_URL_DE_FORMSPREE'; // ej: https://formspree.io/f/abcd1234
 const SHEET_URL = 'REEMPLAZA_CON_TU_URL_DE_APPS_SCRIPT';
-const WA = '5215532749722';
 
-document.getElementById('lead-form').addEventListener('submit', function(e) {
+document.getElementById('lead-form').addEventListener('submit', async function(e) {
   e.preventDefault();
   const g = id => document.getElementById(id).value.trim();
   const nombre=g('nombre'), telefono=g('telefono'), tipo=g('tipo');
-  const medidas=g('medidas'), presupuesto=g('presupuesto'), plazo=g('plazo'), detalles=g('detalles');
   if (!nombre || !telefono || !tipo) { alert('Por favor completa tu nombre, WhatsApp y el tipo de mueble.'); return; }
-  const data = { nombre, telefono, tipo, medidas, presupuesto, plazo, detalles, fecha: new Date().toLocaleString('es-MX') };
+
+  const btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+
+  const data = {
+    nombre, whatsapp: telefono, tipo_mueble: tipo,
+    medidas: g('medidas'), presupuesto: g('presupuesto'),
+    cuando: g('plazo'), detalles: g('detalles'),
+    fecha: new Date().toLocaleString('es-MX')
+  };
+
+  // Enviar a Formspree (llega a tu email)
+  if (FORMSPREE_URL !== 'REEMPLAZA_CON_TU_URL_DE_FORMSPREE') {
+    try {
+      await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch(err) {}
+  }
+
+  // Enviar a Google Sheets (opcional)
   if (SHEET_URL !== 'REEMPLAZA_CON_TU_URL_DE_APPS_SCRIPT') {
     fetch(SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
   }
-  const msg = `Hola, vengo de la web de Carpintería Lindavista.\n\n*Nombre:* ${nombre}\n*WhatsApp:* ${telefono}\n*Mueble:* ${tipo}\n`
-    + (medidas?`*Medidas:* ${medidas}\n`:'') + (presupuesto?`*Presupuesto:* ${presupuesto}\n`:'')
-    + (plazo?`*Cuándo:* ${plazo}\n`:'') + (detalles?`\n*Detalles:* ${detalles}`:'');
-  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank');
+
+  // Mostrar mensaje de éxito
+  document.getElementById('lead-form').style.display = 'none';
+  document.getElementById('form-success').classList.add('show');
 });
 </script>
 </body>
