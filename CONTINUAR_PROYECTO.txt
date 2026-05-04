@@ -1,0 +1,174 @@
+================================================================================
+PROYECTO: CARPINTERÍA LINDAVISTA — SITIO WEB
+Resumen para continuar en otra sesión de Claude
+================================================================================
+
+CONTEXTO DEL NEGOCIO
+────────────────────
+- Nombre: Carpintería Lindavista
+- Giro: Carpintería artesanal familiar, muebles a medida
+- Ubicación: Ciudad de México (CDMX)
+- Trayectoria: Más de 30 años en el negocio
+- Teléfono/WhatsApp: 55 3274 9722 (formato completo: 5215532749722)
+- Instagram: https://www.instagram.com/carpinteria.lindavista/
+- Google Maps: "Carpintería Lindavista" — calificación 4.0 ★
+- Dominio comprado: carpinterialindavista.com.mx (registrado en Hostgator)
+  NOTA: Solo tienen el dominio, NO tienen hosting en Hostgator.
+  Se va a publicar en GitHub Pages (gratis) y apuntar el dominio ahí.
+
+SITUACIÓN ACTUAL DEL NEGOCIO
+─────────────────────────────
+- No tienen página web activa
+- Tienen Instagram y Facebook
+- Los clientes los buscan por teléfono, quieren reducir eso
+- No pueden dar su dirección por seguridad (extorsionadores en México)
+- Han tenido visitas sin concretar ventas — quieren filtrar clientes primero
+- La estrategia es: formulario web → cotización por WhatsApp → visita solo si hay acuerdo
+
+ESTADO DEL SITIO WEB
+─────────────────────
+El sitio web YA ESTÁ COMPLETAMENTE CONSTRUIDO como un solo archivo index.html.
+Está listo para subir a GitHub Pages.
+
+DISEÑO Y CARACTERÍSTICAS:
+- Estilo: Ultra minimalista, blanco, tipografía serif fina (Cormorant Garamond + Jost)
+- Pantalla inicial: 100vh blanca, logo centrado, botón "Cotizar proyecto" visible desde el inicio
+- Logo: SVG geométrico — cuadrado exterior con líneas que lo dividen en cuatro cuadrantes,
+  dos cuadrados interiores rellenos de negro (diagonal: arriba-izquierda y abajo-derecha)
+- Nav: Aparece al hacer scroll (oculto al inicio), con links a Trabajos / Servicios / Cotizar
+- Secciones: Intro → Historia → Collage de fotos → Servicios → Proceso → Formulario → Footer
+
+CONTENIDO DEL SITIO:
+- Historia: "Treinta años haciendo bien las cosas" — carpintería familiar CDMX
+- Stats: +30 años de experiencia | +5,000 clientes satisfechos | CDMX instalación a domicilio
+- Galería: 13 fotos reales del Instagram, guardadas en la carpeta assets/
+  Las fotos están en un collage tipo grid asimétrico (4 columnas, algunas celdas span 2)
+  Al hacer clic en cualquier foto se abre lightbox a pantalla completa con navegación
+  Flechas ← → en teclado y botones, cierre con Esc o clic fuera
+- Servicios listados: Clósets / Cocinas integrales / Libreros y estantes /
+  Mesas y comedores / Muebles de baño / Puertas y cancelería / Proyectos especiales
+- Formulario de cotización con campos:
+    Nombre, WhatsApp, Tipo de mueble (select), Medidas aproximadas,
+    Presupuesto aproximado (select con rangos), Cuándo lo necesita (select), Detalles
+  Al enviar: abre WhatsApp con mensaje pre-armado con todos los datos del cliente
+  También guarda los datos en Google Sheets vía Apps Script (hay un placeholder para la URL)
+
+COSAS IMPORTANTES QUE NO INCLUYE EL SITIO:
+- No aparece la dirección del taller (por seguridad)
+- No dice "sin costo" en ningún lado (la instalación está incluida pero no es gratis per se)
+- No dice "sin visita anticipada" (se quitó a petición del dueño)
+- Sí dice: "Respuesta en 24 hrs | Instalación incluida | Cotización sin compromiso"
+
+PENDIENTE EN EL CÓDIGO — UNA LÍNEA POR CAMBIAR:
+En el index.html hay una línea:
+  const SHEET_URL = 'REEMPLAZA_CON_TU_URL_DE_APPS_SCRIPT';
+Cuando tengan la URL del Google Apps Script, reemplazar ese texto con la URL real.
+
+CÓMO PUBLICAR — PASOS PENDIENTES
+──────────────────────────────────
+
+PASO 1: Crear cuenta GitHub (si no tienen)
+- Ir a github.com → Sign up
+- Elegir username (ej: carpinteria-lindavista)
+
+PASO 2: Crear repositorio
+- Click en "New repository"
+- Nombre: carpinteria-lindavista
+- Visibilidad: Public
+- Click "Create repository"
+
+PASO 3: Subir archivos
+- En el repositorio, click "uploading an existing file"
+- Subir estos archivos:
+    1. index.html  (el sitio web completo)
+    2. CNAME       (archivo de texto sin extensión, contiene solo: carpinterialindavista.com.mx)
+    3. assets/     (carpeta con las fotos work-01.jpg a work-13.jpg)
+
+PASO 4: Activar GitHub Pages
+- Settings → Pages → Source: Deploy from branch → main / (root) → Save
+- URL temporal: https://TU-USUARIO.github.io/carpinteria-lindavista
+
+PASO 5: Conectar dominio en Hostgator
+- Entrar a Hostgator → My Account → Domains → carpinterialindavista.com.mx → DNS Management
+- Agregar 4 registros tipo A:
+    @ → 185.199.108.153
+    @ → 185.199.109.153
+    @ → 185.199.110.153
+    @ → 185.199.111.153
+- Agregar 1 registro CNAME:
+    www → TU-USUARIO.github.io
+
+PASO 6: Configurar dominio en GitHub
+- En el repositorio → Settings → Pages → Custom domain
+- Escribir: carpinterialindavista.com.mx → Save
+- Activar "Enforce HTTPS" (aparece después de unos minutos)
+
+NOTA: Los DNS tardan entre 30 min y 24 horas en propagarse.
+
+PASO 7 (OPCIONAL): Conectar Google Sheets para guardar leads
+- Ir a sheets.google.com → crear hoja nueva → "Leads Carpintería Lindavista"
+- En la hoja: Extensiones → Apps Script → pegar el código del archivo apps-script.js
+- Guardar → Implementar → Nueva implementación
+    Tipo: Aplicación web
+    Ejecutar como: Yo
+    Quién tiene acceso: Cualquier persona
+- Copiar la URL que genera
+- Abrir index.html con un editor de texto
+- Buscar: REEMPLAZA_CON_TU_URL_DE_APPS_SCRIPT
+- Reemplazar con la URL copiada
+- Guardar y volver a subir el index.html a GitHub
+
+APPS SCRIPT (pegar en Google Apps Script):
+───────────────────────────────────────────
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(['Fecha', 'Nombre', 'Teléfono', 'Tipo de mueble', 'Medidas', 'Presupuesto', 'Cuándo', 'Detalles']);
+      sheet.getRange(1, 1, 1, 8).setFontWeight('bold');
+    }
+    var data = JSON.parse(e.postData.contents);
+    sheet.appendRow([
+      data.fecha || new Date().toLocaleString('es-MX'),
+      data.nombre    || '',
+      data.telefono  || '',
+      data.tipo      || '',
+      data.medidas   || '',
+      data.presupuesto || '',
+      data.plazo     || '',
+      data.detalles  || ''
+    ]);
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'ok' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: 'error', message: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+NOTA SOBRE EL INDEX.HTML
+─────────────────────────
+El archivo index.html ahora pesa ~40KB. Las 13 fotos están separadas en assets/
+para que el HTML cargue más rápido y sea más fácil reemplazar imágenes en el futuro.
+Si agregan más fotos, subirlas a assets/ y agregarlas en la galería del index.html.
+
+ARCHIVOS GENERADOS EN ESTA SESIÓN
+────────────────────────────────────
+1. index.html      — El sitio web completo (listo para subir)
+2. INSTRUCCIONES.md — Guía paso a paso para publicar
+3. apps-script.js  — Código para Google Sheets
+4. assets/         — Fotos de trabajos reales usadas por la página
+
+PRÓXIMAS MEJORAS SUGERIDAS (para cuando quieran)
+──────────────────────────────────────────────────
+- Agregar más fotos de trabajos recientes
+- Sección de testimonios de clientes
+- WhatsApp flotante en todas las páginas (botón verde fijo abajo a la derecha)
+- Google Analytics para ver cuántas visitas recibe
+- Optimizar imágenes con Cloudinary para que el sitio cargue más rápido
+
+================================================================================
+FIN DEL RESUMEN
+================================================================================
