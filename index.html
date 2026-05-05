@@ -97,7 +97,7 @@ section{position:relative}
 
 /* Hero */
 .intro{position:relative;min-height:92svh;display:grid;place-items:center;overflow:hidden;padding:7rem 1.25rem 5rem;text-align:center;color:var(--white);background:#1a1c19}
-.intro::before{content:'';position:absolute;inset:0;background:url('assets/IMG_5212.PNG') center/cover no-repeat;background-position:center 40%;filter:contrast(1.05);z-index:0}
+.intro::before{content:'';position:absolute;inset:0;background:url('assets/hero-bg.jpg') center/cover no-repeat;background-position:center 40%;filter:contrast(1.05);z-index:0}
 .intro::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,15,.55) 0%,rgba(15,18,15,.6) 45%,rgba(15,18,15,.85) 100%);z-index:1}
 .intro > *{position:relative;z-index:2}
 .logo-wrap{width:min(920px,100%);display:flex;flex-direction:column;align-items:center}
@@ -210,7 +210,6 @@ textarea{resize:vertical;min-height:120px}
 .btn-submit{width:100%;margin-top:.2rem;background:var(--forest);color:var(--white)}
 .btn-submit:hover{background:var(--forest-dark)}
 .form-note{margin-top:.2rem;color:var(--muted);font-size:.82rem;line-height:1.5;text-align:center}
-.form-hint{margin:-.4rem 0 .2rem;padding:.6rem .8rem;background:rgba(194,162,111,.1);border-left:2px solid var(--gold);color:var(--muted);font-size:.82rem;line-height:1.5;border-radius:4px}
 .form-success{display:none;text-align:center;padding:3rem 1rem}
 .form-success.show{display:block}
 .form-success .check{width:58px;height:58px;background:var(--forest);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
@@ -482,7 +481,6 @@ footer p{font-size:.82rem;color:var(--muted);font-weight:300}
           <input type="text" id="ubicacion" name="ubicacion" placeholder="Colonia, alcaldía o municipio" required>
         </div>
       </div>
-      <p class="form-hint">La ubicación nos ayuda a estimar flete, gasolina e instalación dentro o fuera de CDMX.</p>
       <div>
         <label>Detalles adicionales</label>
         <textarea id="detalles" name="detalles" placeholder="Material preferido, referencias, medidas del espacio, ideas, etc."></textarea>
