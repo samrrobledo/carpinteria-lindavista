@@ -96,7 +96,10 @@ section{position:relative}
 .rule{width:48px;height:2px;background:var(--gold);margin:1.35rem auto 1.6rem}
 
 /* Hero */
-.intro{min-height:92svh;display:grid;place-items:center;overflow:hidden;padding:7rem 1.25rem 5rem;text-align:center;color:var(--white);background:#5f645d}
+.intro{position:relative;min-height:92svh;display:grid;place-items:center;overflow:hidden;padding:7rem 1.25rem 5rem;text-align:center;color:var(--white);background:#1a1c19}
+.intro::before{content:'';position:absolute;inset:0;background:url('assets/IMG_5212.PNG') center/cover no-repeat;background-position:center 40%;filter:contrast(1.05);z-index:0}
+.intro::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,15,.55) 0%,rgba(15,18,15,.6) 45%,rgba(15,18,15,.85) 100%);z-index:1}
+.intro > *{position:relative;z-index:2}
 .logo-wrap{width:min(920px,100%);display:flex;flex-direction:column;align-items:center}
 .logo-mark{width:74px;height:74px;margin-bottom:1.25rem;filter:drop-shadow(0 8px 24px rgba(0,0,0,.25))}
 .intro .logo-mark rect,.intro .logo-mark line{stroke:var(--white)}
@@ -207,6 +210,7 @@ textarea{resize:vertical;min-height:120px}
 .btn-submit{width:100%;margin-top:.2rem;background:var(--forest);color:var(--white)}
 .btn-submit:hover{background:var(--forest-dark)}
 .form-note{margin-top:.2rem;color:var(--muted);font-size:.82rem;line-height:1.5;text-align:center}
+.form-hint{margin:-.4rem 0 .2rem;padding:.6rem .8rem;background:rgba(194,162,111,.1);border-left:2px solid var(--gold);color:var(--muted);font-size:.82rem;line-height:1.5;border-radius:4px}
 .form-success{display:none;text-align:center;padding:3rem 1rem}
 .form-success.show{display:block}
 .form-success .check{width:58px;height:58px;background:var(--forest);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
@@ -462,16 +466,23 @@ footer p{font-size:.82rem;color:var(--muted);font-weight:300}
           </select>
         </div>
       </div>
-      <div>
-        <label>¿Cuándo lo necesitas?</label>
-        <select id="plazo" name="cuando">
-          <option value="" disabled selected>Urgencia</option>
-          <option>Menos de 2 semanas</option>
-          <option>En el próximo mes</option>
-          <option>En 1 a 3 meses</option>
-          <option>Todavía estoy planeando</option>
-        </select>
+      <div class="f2">
+        <div>
+          <label>¿Cuándo lo necesitas?</label>
+          <select id="plazo" name="cuando">
+            <option value="" disabled selected>Urgencia</option>
+            <option>Menos de 2 semanas</option>
+            <option>En el próximo mes</option>
+            <option>En 1 a 3 meses</option>
+            <option>Todavía estoy planeando</option>
+          </select>
+        </div>
+        <div>
+          <label>Ubicación del proyecto</label>
+          <input type="text" id="ubicacion" name="ubicacion" placeholder="Colonia, alcaldía o municipio" required>
+        </div>
       </div>
+      <p class="form-hint">La ubicación nos ayuda a estimar flete, gasolina e instalación dentro o fuera de CDMX.</p>
       <div>
         <label>Detalles adicionales</label>
         <textarea id="detalles" name="detalles" placeholder="Material preferido, referencias, medidas del espacio, ideas, etc."></textarea>
@@ -561,11 +572,11 @@ const WA = '5215532749722';
 document.getElementById('lead-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const g = id => document.getElementById(id).value.trim();
-  const nombre=g('nombre'), telefono=g('telefono'), tipo=g('tipo');
+  const nombre=g('nombre'), telefono=g('telefono'), tipo=g('tipo'), ubicacion=g('ubicacion');
   const medidas=g('medidas'), presupuesto=g('presupuesto'), plazo=g('plazo'), detalles=g('detalles');
-  if (!nombre || !telefono || !tipo) { alert('Por favor completa tu nombre, WhatsApp y el tipo de mueble.'); return; }
+  if (!nombre || !telefono || !tipo || !ubicacion) { alert('Por favor completa tu nombre, WhatsApp, tipo de mueble y ubicación.'); return; }
 
-  const msg = `Hola, vengo de la web de Carpintería Lindavista.\n\n*Nombre:* ${nombre}\n*WhatsApp:* ${telefono}\n*Mueble:* ${tipo}\n`
+  const msg = `Hola, vengo de la web de Carpintería Lindavista.\n\n*Nombre:* ${nombre}\n*WhatsApp:* ${telefono}\n*Mueble:* ${tipo}\n*Ubicación:* ${ubicacion}\n`
     + (medidas ? `*Medidas:* ${medidas}\n` : '')
     + (presupuesto ? `*Presupuesto:* ${presupuesto}\n` : '')
     + (plazo ? `*Cuándo:* ${plazo}\n` : '')
@@ -576,7 +587,7 @@ document.getElementById('lead-form').addEventListener('submit', function(e) {
 
   // Google Sheets en segundo plano (opcional)
   if (SHEET_URL !== 'REEMPLAZA_CON_TU_URL_DE_APPS_SCRIPT') {
-    const data = { nombre, telefono, tipo, medidas, presupuesto, plazo, detalles, fecha: new Date().toLocaleString('es-MX') };
+    const data = { nombre, telefono, tipo, ubicacion, medidas, presupuesto, plazo, detalles, fecha: new Date().toLocaleString('es-MX') };
     fetch(SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
   }
 
