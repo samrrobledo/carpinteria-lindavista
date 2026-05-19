@@ -191,9 +191,27 @@ Cada lunes anotar:
 - Leads nuevos por WhatsApp.
 - Leads que llegaron desde Google.
 - Leads que llegaron desde Instagram/Facebook.
+- Leads que llegaron desde pagina de closets, cocinas, muebles o costos.
 - Cotizaciones enviadas.
 - Visitas agendadas.
 - Proyectos cerrados.
 - Preguntas repetidas que conviene responder en posts.
 
 Si una pregunta se repite 3 veces, se convierte en publicacion o se agrega al sitio.
+
+## Como leer el origen del lead
+
+Los botones de WhatsApp del sitio ya incluyen un texto distinto segun el origen:
+
+- Home - formulario de cotizacion.
+- Boton flotante de la web.
+- Pagina de closets a medida.
+- Pagina de cocinas integrales.
+- Pagina de muebles a medida.
+- Pagina de costos orientativos.
+
+Cuando llegue un mensaje, registrar ese origen en la etiqueta o nota del contacto. En 30 dias esto permite saber que pagina genera conversaciones reales.
+
+## Pagina de costos
+
+La pagina `costos-carpinteria-cdmx/` no da precios cerrados; sirve para filtrar expectativas antes de cotizar. Si muchos clientes preguntan por un rango especifico, ajustar los textos para que la pagina responda mejor esa duda.
