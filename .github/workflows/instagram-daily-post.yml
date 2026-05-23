@@ -1,0 +1,34 @@
+name: Daily Instagram Post
+
+on:
+  schedule:
+    # Runs daily at 10:00 AM Mexico City time (UTC-6 = 16:00 UTC)
+    - cron: '0 16 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Post to Instagram
+        env:
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: python instagram/post_to_instagram.py
+
+      - name: Commit updated posts.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add instagram/posts.json
+          git diff --staged --quiet || git commit -m "Mark Instagram post as published"
+          git push

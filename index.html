@@ -134,9 +134,7 @@ section{position:relative}
 .intro::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,15,.55) 0%,rgba(15,18,15,.6) 45%,rgba(15,18,15,.85) 100%);z-index:1}
 .intro > *{position:relative;z-index:2}
 .logo-wrap{width:min(920px,100%);display:flex;flex-direction:column;align-items:center}
-.logo-mark{width:74px;height:74px;margin-bottom:1.25rem;filter:drop-shadow(0 8px 24px rgba(0,0,0,.25))}
-.intro .logo-mark rect,.intro .logo-mark line{stroke:var(--white)}
-.intro .logo-mark rect[fill="#1a1a1a"]{fill:var(--white)}
+.logo-mark{width:90px;height:90px;margin-bottom:1.25rem;filter:drop-shadow(0 8px 24px rgba(0,0,0,.25));border-radius:50%;object-fit:contain}
 .logo-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:400;text-transform:uppercase;color:inherit;margin-bottom:.45rem}
 .logo-since,.hero-kicker{font-size:.82rem;font-weight:500;text-transform:uppercase;color:rgba(255,255,255,.82)}
 .intro h1{max-width:880px;font-family:'Cormorant Garamond',Georgia,serif;font-size:5.2rem;font-weight:300;line-height:.96;margin:.9rem auto 1rem;color:var(--white)}
@@ -332,13 +330,7 @@ footer p{font-size:.82rem;color:var(--muted);font-weight:300}
 <section class="intro" aria-labelledby="inicio-title">
   <div class="logo-wrap">
 
-    <svg class="logo-mark" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1" y="1" width="50" height="50" stroke="#1a1a1a" stroke-width=".8"/>
-      <rect x="9" y="9" width="15" height="15" fill="#1a1a1a"/>
-      <rect x="28" y="28" width="15" height="15" fill="#1a1a1a"/>
-      <line x1="1" y1="26" x2="51" y2="26" stroke="#1a1a1a" stroke-width=".8"/>
-      <line x1="26" y1="1" x2="26" y2="51" stroke="#1a1a1a" stroke-width=".8"/>
-    </svg>
+    <img class="logo-mark" src="assets/logo.png" alt="Carpintería Lindavista logo" />
 
     <div class="hero-kicker">Carpintería a medida en CDMX</div>
     <h1 id="inicio-title">Carpintería Lindavista</h1>
