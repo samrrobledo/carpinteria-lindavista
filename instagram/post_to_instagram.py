@@ -19,22 +19,34 @@ def graph_api(endpoint, params):
     url = f"https://graph.facebook.com/v19.0/{endpoint}"
     data = urllib.parse.urlencode(params).encode()
     req = urllib.request.Request(url, data=data)
-    with urllib.request.urlopen(req) as resp:
-        return json.loads(resp.read())
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        body = e.read().decode()
+        print(f"API Error {e.code}: {body}")
+        raise
 
 
 def get_next_post(posts):
     for i, post in enumerate(posts):
         if not post.get("posted"):
             return i, post
-    # All posted — reset the cycle
     for post in posts:
         post["posted"] = False
     return 0, posts[0]
 
 
+def check_image_exists(url):
+    req = urllib.request.Request(url, method="HEAD")
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return resp.status == 200
+    except Exception:
+        return False
+
+
 def publish(image_url, caption):
-    # Step 1: Create media container
     result = graph_api(f"{INSTAGRAM_USER_ID}/media", {
         "image_url": image_url,
         "caption": caption,
@@ -43,10 +55,8 @@ def publish(image_url, caption):
     creation_id = result["id"]
     print(f"Media container created: {creation_id}")
 
-    # Step 2: Wait for processing
-    time.sleep(5)
+    time.sleep(10)
 
-    # Step 3: Publish
     result = graph_api(f"{INSTAGRAM_USER_ID}/media_publish", {
         "creation_id": creation_id,
         "access_token": INSTAGRAM_ACCESS_TOKEN,
@@ -69,6 +79,10 @@ def main():
 
     print(f"Posting [{idx}]: {post['image']}")
     print(f"Image URL: {image_url}")
+
+    if not check_image_exists(image_url):
+        print(f"ERROR: Image not accessible at {image_url}")
+        sys.exit(1)
 
     publish(image_url, caption)
 
