@@ -328,7 +328,7 @@ footer p{font-size:.82rem;color:var(--muted);font-weight:300}
   .ci:nth-child(1){grid-column:span 2;grid-row:span 2}
   .ci:nth-child(5),.ci:nth-child(8),.ci:nth-child(11){grid-column:span 1;grid-row:span 1}
   .services-grid,.process-grid,.f2,.trust-grid{grid-template-columns:1fr}
-  .process-grid::before{display:none}
+  .process-grid::before{left:50%;transform:translateX(-50%);top:20px;width:2px;height:calc(100% - 40px);background:linear-gradient(180deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,.45) 50%,rgba(255,255,255,.18) 100%)}
   .srv-row{min-height:142px}
   .quote-panel{padding:1rem}
   footer{flex-direction:column;gap:1rem;text-align:center}
