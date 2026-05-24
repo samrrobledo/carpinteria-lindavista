@@ -1,80 +1,44 @@
 [
   {
-    "image": "assets/work-01.jpg",
+    "image": "instagram/promociones/promo-01.jpg",
     "caption": "🪵 ¡Transforma tu hogar con muebles a la medida! En Carpintería Lindavista diseñamos y fabricamos closets, cocinas integrales y muebles personalizados. 📞 Cotización sin compromiso.\n\n#CarpinteriaLindavista #MueblesAMedida #CarpinteriaCDMX #ClosetsAMedida #CocinasIntegrales #Lindavista #CDMX",
     "category": "promociones",
-    "posted": true
+    "posted": false
   },
   {
-    "image": "assets/work-02.jpg",
+    "image": "instagram/tips/tip-01.jpg",
     "caption": "💡 TIP: ¿Sabías que la madera de pino es una de las más versátiles para muebles? Es resistente, económica y fácil de trabajar. Ideal para closets y libreros.\n\n¿Tienes dudas sobre qué madera elegir? ¡Escríbenos!\n\n#TipsDeCarpinteria #MaderasPino #CarpinteriaLindavista #MueblesDeMadera #CDMX",
     "category": "tips",
     "posted": false
   },
   {
-    "image": "assets/work-03.jpg",
+    "image": "instagram/portafolio/trabajo-01.jpg",
     "caption": "✨ Proyecto terminado: Closet empotrado con puertas corredizas en melamina. Diseño moderno y funcional que aprovecha cada centímetro.\n\n¿Quieres uno así? 📲 Contáctanos para una cotización personalizada.\n\n#TrabajoTerminado #ClosetEmpotrado #CarpinteriaLindavista #AntesYDespues #DiseñoInterior #CDMX",
     "category": "portafolio",
     "posted": false
   },
   {
-    "image": "assets/work-04.jpg",
+    "image": "instagram/promociones/promo-02.jpg",
     "caption": "🔥 PROMOCIÓN DEL MES: 10% de descuento en cocinas integrales. Incluye diseño, fabricación e instalación. ¡No dejes pasar esta oportunidad!\n\n📞 Llámanos o envía WhatsApp para más información.\n\n#Promocion #CocinasIntegrales #CarpinteriaLindavista #DescuentoEspecial #CDMX #Lindavista",
     "category": "promociones",
     "posted": false
   },
   {
-    "image": "assets/work-05.jpg",
+    "image": "instagram/tips/tip-02.jpg",
     "caption": "🧹 TIP DE CUIDADO: Para mantener tus muebles de madera como nuevos, límpialos con un paño húmedo (no mojado) y aplica cera o aceite para madera cada 3 meses.\n\n#CuidadoDeMuebles #TipsDeCarpinteria #CarpinteriaLindavista #MueblesDeMadera #MantenimientoDelHogar",
     "category": "tips",
     "posted": false
   },
   {
-    "image": "assets/work-06.jpg",
+    "image": "instagram/portafolio/trabajo-02.jpg",
     "caption": "🏠 Mueble de TV con repisas flotantes en MDF. Diseño minimalista que combina con cualquier decoración.\n\n¿Te gustaría un diseño personalizado para tu sala? ¡Cotiza con nosotros!\n\n#MuebleDeTV #DiseñoMinimalista #CarpinteriaLindavista #MueblesPersonalizados #SalaModerna #CDMX",
     "category": "portafolio",
     "posted": false
   },
   {
-    "image": "assets/work-07.jpg",
+    "image": "instagram/tips/tip-03.jpg",
     "caption": "📐 TIP: Antes de pedir un mueble a medida, mide el espacio 3 veces. Largo, ancho y alto, incluyendo zoclos y contactos eléctricos. ¡Un buen proyecto empieza con buenas medidas!\n\n#TipsDeCarpinteria #MedirBien #CarpinteriaLindavista #MueblesAMedida #CDMX",
     "category": "tips",
-    "posted": false
-  },
-  {
-    "image": "assets/work-08.jpg",
-    "caption": "🪵 Cada proyecto es único. Fabricamos muebles que se adaptan a tu espacio, no al revés.\n\nCuéntanos tu idea por WhatsApp: 55 3274 9722\n\n#CarpinteriaLindavista #HechoAMedida #CarpinteriaCDMX #MueblesPersonalizados #CDMX",
-    "category": "promociones",
-    "posted": false
-  },
-  {
-    "image": "assets/work-09.jpg",
-    "caption": "✨ Otro proyecto entregado. La satisfacción de ver un mueble bien hecho en su lugar.\n\n¿Tienes un proyecto en mente? 📲 Escríbenos.\n\n#ProyectoTerminado #CarpinteriaLindavista #MueblesAMedida #Entrega #CDMX",
-    "category": "portafolio",
-    "posted": false
-  },
-  {
-    "image": "assets/work-10.jpg",
-    "caption": "💡 ¿Melamina o madera sólida? La melamina es más económica y resistente a la humedad. La madera sólida da un acabado más cálido y premium. ¡Pregúntanos cuál te conviene!\n\n#TipsDeCarpinteria #Melamina #MaderaSolida #CarpinteriaLindavista #CDMX",
-    "category": "tips",
-    "posted": false
-  },
-  {
-    "image": "assets/work-11.jpg",
-    "caption": "🏠 Soluciones de almacenamiento inteligentes. Aprovecha cada rincón de tu hogar con muebles diseñados para ti.\n\nCotiza sin compromiso: 55 3274 9722\n\n#Almacenamiento #EspaciosInteligentes #CarpinteriaLindavista #MueblesAMedida #CDMX",
-    "category": "promociones",
-    "posted": false
-  },
-  {
-    "image": "assets/work-12.jpg",
-    "caption": "📐 Del diseño a la instalación. En Carpintería Lindavista nos encargamos de todo el proceso para que tú solo disfrutes el resultado.\n\n#ProcesoCompleto #CarpinteriaLindavista #Instalacion #MueblesAMedida #CDMX",
-    "category": "portafolio",
-    "posted": false
-  },
-  {
-    "image": "assets/work-13.jpg",
-    "caption": "🪵 Más de 30 años transformando espacios en la Ciudad de México. Cada mueble cuenta una historia de oficio y dedicación.\n\nConócenos: carpinterialindavista.com.mx\n\n#30Años #CarpinteriaLindavista #Tradicion #Oficio #CarpinteriaCDMX #CDMX",
-    "category": "portafolio",
     "posted": false
   }
 ]
