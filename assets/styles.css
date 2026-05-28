@@ -269,8 +269,8 @@ footer.site-footer{
 .philosophy-copy .btn{margin-top:1.5rem}
 
 /* ============ HOME: Especialidades (imagen) ============ */
-.approach{padding:0;background:#f4ecde;display:block}
-.oficio-img{display:block;width:100%;height:auto;max-width:none}
+.approach{padding:0;background:#f0e8df;display:flex;justify-content:center}
+.oficio-img{display:block;width:100%;max-width:1600px;height:auto}
 .specs{
   list-style:none;
   display:grid;
