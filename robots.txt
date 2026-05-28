@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
 
+# Bloquea bots agresivos que no aportan trafico
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
 Sitemap: https://carpinterialindavista.com.mx/sitemap.xml
+Host: https://carpinterialindavista.com.mx
