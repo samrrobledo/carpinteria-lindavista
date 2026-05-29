@@ -47,8 +47,8 @@ nav.site-nav{
 nav.site-nav.solid{
   background:rgba(255,255,255,.96);
   backdrop-filter:blur(14px);
-  border-bottom-color:var(--line);
-  box-shadow:0 1px 0 rgba(0,0,0,.02);
+  border-bottom-color:transparent;
+  box-shadow:none;
 }
 .nav-brand{
   display:flex;align-items:center;gap:.9rem;
